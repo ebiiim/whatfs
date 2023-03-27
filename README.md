@@ -5,8 +5,8 @@ A tool to check your file system.
 **Setup**
 
 ```sh
-curl -LO https://github.com/ebiiim/whatfs/releases/download/v0.1.0/whatfs_0.1.0_linux_amd64.tar.gz
-tar zxvf whatfs_0.1.0_linux_amd64.tar.gz
+curl -LO https://github.com/ebiiim/whatfs/releases/download/v0.1.1/whatfs_0.1.1_linux_amd64.tar.gz
+tar zxvf whatfs_0.1.1_linux_amd64.tar.gz
 # optional
 sudo cp whatfs /usr/local/bin
 ```
