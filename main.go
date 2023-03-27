@@ -7,6 +7,10 @@ import (
 	"golang.org/x/sys/unix"
 )
 
+var (
+	version = "dev"
+)
+
 func main() {
 
 	var wd string

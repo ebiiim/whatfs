@@ -1,0 +1,27 @@
+project_name: whatfs
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - binary: whatfs
+    env: []
+    goos:
+      - linux
+    goarch:
+      - "386"
+      - amd64
+      - arm
+      - arm64
+    ldflags:
+      - -s -w
+      - -X main.version={{.Version}}
+
+archives:
+  - replacements:
+      386: i386
+      amd64: x86_64
+
+release:
+  prerelease: auto
