@@ -12,10 +12,16 @@ var (
 )
 
 func main() {
+	usage := fmt.Sprintf("Usage: %s <path>\nVersion: %s\n", os.Args[0], version)
+
+	if len(os.Args) > 2 || len(os.Args) == 2 && (os.Args[1] == "-h" || os.Args[1] == "--help" || os.Args[1] == "help" || os.Args[1] == "-v" || os.Args[1] == "--version" || os.Args[1] == "version") {
+		fmt.Fprint(os.Stderr, usage)
+		os.Exit(64)
+	}
 
 	var wd string
 
-	if len(os.Args) > 1 {
+	if len(os.Args) == 2 {
 		wd = os.Args[1]
 	} else {
 		wd, _ = os.Getwd()
@@ -23,7 +29,8 @@ func main() {
 
 	var stat unix.Statfs_t
 	if err := unix.Statfs(wd, &stat); err != nil {
-		panic(err)
+		fmt.Fprintf(os.Stderr, "Error: path=%v err=%v\n", wd, err)
+		os.Exit(1)
 	}
 
 	var t string
